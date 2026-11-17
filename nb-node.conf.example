@@ -1,0 +1,30 @@
+# Config of one Shanoir instance for nb-node.sh. Copy it next to the script, named after the instance,
+# and protect it (it holds a secret):
+#   cp nb-node.conf.example nb-neurinfo.conf && chmod 600 nb-neurinfo.conf
+# then use the same name in every command: bash nb-node.sh sync neurinfo
+
+# required
+# base URL of the Shanoir instance, e.g. https://shanoir.example.org
+SHANOIR_URL=
+# Keycloak client of the instance (realm shanoir-ng) and its secret
+NB_CLIENT_ID=
+NB_CLIENT_SECRET=
+# API port of this instance's node, bound to 127.0.0.1: unique per instance (8000, 8001, ...)
+API_PORT=
+# daily sync time (minute hour), a different slot per instance (e.g. "20 4", "50 4", "20 5"), empty = "20 4"
+CRON_AT=
+# image of the bagel CLI that builds the JSONLDs, with its version
+BAGEL_IMAGE=neurobagel/bagelcli:v0.11.7
+# neurobagel/api image tag
+NB_NAPI_TAG=v0.12.0
+
+# node settings: written into recipes/.env, a change reloads the node at the next sync
+# true: dataset-level counts only; false: subject-level results too (never on a public node)
+NB_RETURN_AGG=true
+# datasets with this many matching subjects or fewer are hidden from query results (0 = show all)
+NB_MIN_CELL_SIZE=5
+# public domain of this node (no https://, no path), e.g. neurobagel.irisa.fr. Empty = local only: start local,
+# and set it once the proxy runs (bash nb-proxy.sh up), see "Make a node public" in the README
+NB_NAPI_DOMAIN=
+# public sub-path of this node on that domain, e.g. /node (leading /, no trailing /): unique when nodes share a domain
+NB_NAPI_BASE_PATH=
