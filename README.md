@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="shanoir-nb-logo.png" alt="Shanoir-Neurobagel" width="720">
+</p>
+
 # Neurobagel nodes for Shanoir
 
 These scripts run one [Neurobagel](https://neurobagel.org) node per Shanoir instance (e.g. **Neurinfo**,
